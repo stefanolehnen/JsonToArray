@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonSaveUsers.setOnClickListener {
 
-            turnJsonToArray()
+            deserealizeJsonToArray()
 
         }
         binding.buttonShowUsers.setOnClickListener {
-            turnArrayToJson(userArrayLIst)
+            serealizeArrayToJson(userArrayLIst)
         }
 
         //val json = "[{\"likesOranges\":\"yes\",\"name\":\"stefano\"},{\"likesOranges\":\"no\",\"name\":\"Luana\"},{\"likesOranges\":\"yes\",\"name\":\"Laurinha\"}]"
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun turnArrayToJson(userArrayList: ArrayList<UserModel>): String{
+    private fun serealizeArrayToJson(userArrayList: ArrayList<UserModel>): String{
         var gson = Gson()
         var jsonString = gson.toJson(userArrayLIst)
 
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         return jsonString
     }
 
-    private fun turnJsonToArray() {
+    private fun deserealizeJsonToArray() {
         //just to test if the json is been converting by the function
         val json = """[{"name":"John","type":"Technical Author"},{"name":"Jane","type":"Technical Author"},{"name":"William","type":"Technical Editor"}]"""
         val typeToken = object : TypeToken<List<UserModel>>() {}.type
